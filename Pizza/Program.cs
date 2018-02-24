@@ -6,10 +6,16 @@ using System.IO;
 namespace Pizza {
     class Program {
         static void Main(string[] args) {
+
+
+
+
+
+
             StreamReader reader;
             int r = 0, c = 0, l = 0, h = 0;
             List<List<char>> dataSet = null;
-            using (reader = new StreamReader(@"..\..\files\small.in")) {
+            using (reader = new StreamReader(@"..\..\files\medium.in")) {
                 //Read First Line
                 var line = reader.ReadLine();
                 if (line != null) {
@@ -29,8 +35,8 @@ namespace Pizza {
             if (dataSet != null){
                 
                 Console.WriteLine(dataSet.Count);
-                Pizza p = new Pizza(dataSet, h, l);
-                List<Slice> slices = p.Result();
+                PizzaC p = new PizzaC(dataSet, h, l);
+                List<Slice> slices = p.bestPiece;
                 StreamWriter writer;
                 using (writer = new StreamWriter(@"..\..\files\out.txt")) {
                     writer.WriteLine(slices.Count);
