@@ -80,7 +80,18 @@ namespace Pizza {
         int best;
         List<Slice> bestPiece;
 
+        void SortSlices(List<Slice> sc) {
+            //Slice with lowest number of possible ways first
+            //Slice containing most cells
+            //Slice with best remaining possible pices
+            foreach(Cell c in Cell) {
+
+            }
+
+        }
+
         void Optimize(List<Slice> remain, List<Slice> storer) {
+            //TODO end loop when no more legal slices and wastewill be worse than best waste so far
             foreach(Slice first in remain) {
                 List<Slice> remains = first.Dontverlap(remain);
                 List<Slice> store = new List<Slice>();

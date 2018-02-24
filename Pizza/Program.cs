@@ -3,27 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Pizza {
     class Program {
         static void Main(string[] args) {
-            List<char> col = new List<char> {
-                'T','T','T','T','T'
-            };
-            List<char> col2 = new List<char> {
-                'T','M','M','M','T'
-            };
-            List<char> col3 = new List<char> {
-                'T','T','T','T','T'
-            };
-            List<List<char>> piz = new List<List<char>> {
-                col,col2,col3
-            };
-            Pizza p = new Pizza(piz, 6, 1);
-            foreach (Slice s in p.Result()) {
-                Console.WriteLine(s);
+            StreamReader reader;
+            int r = 0, c = 0, l = 0, h = 0;
+            List<List<char>> dataSet = null;
+            using (reader = new StreamReader(@"..\..\files\medium.in")) {
+                //Read First Line
+                var line = reader.ReadLine();
+                if (line != null) {
+                    var sline = line.Split();
+                    r = int.Parse(sline[0]);
+                    c = int.Parse(sline[1]);
+                    l = int.Parse(sline[2]);
+                    h = int.Parse(sline[3]);
+                    dataSet = new List<List<char>>();
+                    for (var i = 0; i < r; i++) {
+                        line = reader.ReadLine();
+                        dataSet.Add(line.ToCharArray().ToList());
+                    }
+                }
+
+            }
+            if (dataSet != null) {
+                Console.WriteLine(dataSet.Count);
+                Pizza p = new Pizza(dataSet, h, l);
+                List<Slice> slices = p.Result();
+                StreamWriter writer;
+                using (writer = new StreamWriter(@"..\..\files\out.txt")) {
+                    writer.WriteLine(slices.Count);
+                    foreach (Slice slice in slices) {
+                        Console.WriteLine(slice);
+                        writer.WriteLine(slice.r1 + " " + slice.c1 + " " + slice.r2 + " " + slice.c2);
+                    }
+
+                }
             }
             Console.Read();
         }
     }
+
+
 }
