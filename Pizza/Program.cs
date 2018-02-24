@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace Pizza {
@@ -11,7 +9,7 @@ namespace Pizza {
             StreamReader reader;
             int r = 0, c = 0, l = 0, h = 0;
             List<List<char>> dataSet = null;
-            using (reader = new StreamReader(@"..\..\files\medium.in")) {
+            using (reader = new StreamReader(@"..\..\files\small.in")) {
                 //Read First Line
                 var line = reader.ReadLine();
                 if (line != null) {
@@ -28,7 +26,8 @@ namespace Pizza {
                 }
 
             }
-            if (dataSet != null) {
+            if (dataSet != null){
+                
                 Console.WriteLine(dataSet.Count);
                 Pizza p = new Pizza(dataSet, h, l);
                 List<Slice> slices = p.Result();

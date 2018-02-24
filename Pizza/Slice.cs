@@ -8,6 +8,8 @@ namespace Pizza {
     public class Slice {
         public readonly int r1, r2, c1, c2;
         public readonly int size;
+        public int Weigth { get; set; }
+        public Dictionary<char, int> Map { get;  }
         /// <summary>
         /// R2 must be greater than r1
         /// c2 must be greater than c1
@@ -17,13 +19,15 @@ namespace Pizza {
         /// <param name="c1">The c1.</param>
         /// <param name="r2">The r2.</param>
         /// <param name="c2">The c2.</param>
-        public Slice(int r1, int c1, int r2, int c2) {
+        public Slice(int r1, int c1, int r2, int c2,Dictionary<char,int> map) {
 
             this.r1 = r1;
             this.r2 = r2;
             this.c1 = c1;
             this.c2 = c2;
             size = ((r2 - r1 + 1) * (c2 - c1 + 1));
+            Weigth = 0;
+            Map = map;
         }
         bool Overlap(Slice a) {
             if (r1 > a.r2) {
