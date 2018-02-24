@@ -57,9 +57,11 @@ namespace Pizza {
                 ls = new List<Slice>();
                 left = new List<Cell>(AllCells);
                 Thread t = new Thread(Generator, 30000000);
-                 // Generator();
-                t.Start();
-                t.Join();
+                sw.Start();
+                 Generator();
+                Console.WriteLine(sw.ElapsedMilliseconds);
+               // t.Start();
+               // t.Join();
             } else {
                 size = 0;
             }
