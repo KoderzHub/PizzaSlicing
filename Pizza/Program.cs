@@ -15,7 +15,7 @@ namespace Pizza {
             StreamReader reader;
             int r = 0, c = 0, l = 0, h = 0;
             List<List<char>> dataSet = null;
-            using (reader = new StreamReader(@"..\..\files\example.in")) {
+            using (reader = new StreamReader(@"..\..\files\small.in")) {
                 //Read First Line
                 var line = reader.ReadLine();
                 if (line != null) {
